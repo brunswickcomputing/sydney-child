@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/sydney
 Author: aThemes
 Author URI: http://athemes.com
 Template: sydney
-Version: 3.0
+Version: 3.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sydney
@@ -204,4 +204,20 @@ textarea {
 th, td {
 	border: 0;
 	text-align: center;
+}
+.site-branding .site-logo {
+	margin-bottom: 0;
+}
+.site-branding {
+	justify-content: center;
+}
+.header-username.nav-link {
+	color: #FFF;
+}
+.dropdown-menu.show {
+    background: white;
+}
+
+.dropdown-item {
+    color: #006800;
 }
