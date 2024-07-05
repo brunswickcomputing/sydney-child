@@ -90,12 +90,3 @@ function is_checkout() {
 function is_account_page() {
 	return false;
 }
-function register_user_menu() {
-	register_nav_menu('user-menu',__( 'User Menu' ));
-}
-add_action( 'init', 'register_user_menu' );
-function sydney_child_add_google_fonts() {
-	wp_enqueue_style( 'sydney-child-google-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap',array(), null );
-	wp_enqueue_style( 'sydney-child-google-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap',array(), null );
-}
-add_action( 'wp_enqueue_scripts', 'sydney_child_add_google_fonts' );
