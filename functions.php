@@ -29,23 +29,42 @@ add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue_styles', 15 );
  */
 function sydney_woocommerce_header_cart() {
 	if ( is_user_logged_in() ) {
-		$current_user    = wp_get_current_user();
-		$account_url     = esc_url( home_url( '/member-account/' ) );
-		$favourites_url  = esc_url( home_url( '/member-account/favourites/' ) );
-		$messages_url    = esc_url( home_url( '/member-account/messages/' ) );
+		$current_user   = wp_get_current_user();
+		$account_url    = esc_url( home_url( '/member-account/' ) );
+		$favourites_url = esc_url( home_url( '/member-account/favourites/' ) );
+		$messages_url   = esc_url( home_url( '/member-account/messages/' ) );
+		if ( class_exists( 'Racketmanager\Racketmanager_Player' ) ) {
+			$user = Racketmanager\get_player( get_current_user_id() );
+			if ( $user ) {
+				$message_count = $user->get_messages(
+					array(
+						'count'  => true,
+						'status' => 'unread',
+					)
+				);
+			}
+		}
 		?>
 		<div class="dropdown">
 			<a class="nav-link dropdown-toggle header-username" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 				<?php echo esc_html( $current_user->display_name ); ?>
 			</a>
 			<ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="<?php echo esc_attr( $account_url ); ?>"><?php esc_html_e( 'Profile', 'sydney' ); ?></a></li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_attr( $account_url ); ?>"><?php esc_html_e( 'Profile', 'sydney' ); ?></a>
+				</li>
 				<li><hr class="dropdown-divider"></li>
-				<li><a class="dropdown-item" href="<?php echo esc_attr( $messages_url ); ?>"><?php esc_html_e( 'Messages', 'sydney' ); ?></a></li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_attr( $messages_url ); ?>"><?php esc_html_e( 'Messages', 'sydney' ); ?><?php echo ( empty( $message_count ) ) ? '' : ' (' . esc_html( $message_count ) . ')'; ?></a>
+				</li>
 				<li><hr class="dropdown-divider"></li>
-				<li><a class="dropdown-item" href="<?php echo esc_attr( $favourites_url ); ?>"><?php esc_html_e( 'Favourites', 'sydney' ); ?></a></li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_attr( $favourites_url ); ?>"><?php esc_html_e( 'Favourites', 'sydney' ); ?></a>
+				</li>
 				<li><hr class="dropdown-divider"></li>
-				<li><a class="dropdown-item" href="<?php echo wp_logout_url(); ?>"><?php esc_html_e( 'Logout', 'sydney' ); ?></a></li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'sydney' ); ?></a>
+				</li>
 			</ul>
 		</div>
 		<?php
