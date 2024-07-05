@@ -50,10 +50,24 @@ function sydney_woocommerce_header_cart() {
 		</div>
 		<?php
 	} else {
-		$loginURL = esc_url( home_url( '/member-login/' ) );
+		$login_url = esc_url( home_url( '/member-login/' ) );
+		if ( get_option( 'users_can_register' ) ) {
+			$register_url = esc_url( home_url( '/member-login?action=register' ) );
+		} else {
+			$register_url = null;
+		}
 		?>
 		<div id="loginrow" class="">
-			<p><a href="<?php echo esc_attr( $loginURL ); ?>">Login</a></p>
+			<p>
+				<a href="<?php echo esc_attr( $login_url ); ?>">Login</a>
+				<?php
+				if ( ! empty( $register_url ) ) {
+					?>
+					| <a href="<?php echo esc_attr( $register_url ); ?>"><?php esc_html_e( 'Register', 'sydney' ); ?></a>
+					<?php
+				}
+				?>
+			</p>
 		</div>
 		<?php
 	}
