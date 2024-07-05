@@ -8,24 +8,25 @@
 /**
  * Enqueues the parent stylesheet. Do not remove this function.
  */
-add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue' );
 function sydney_child_enqueue() {
-
 	wp_dequeue_style( 'sydney-bootstrap' );
-	wp_enqueue_style( 'sydney-child-bootstrap', get_theme_file_uri() . '/css/bootstrap.min.css');
-	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
-
+	wp_enqueue_style( 'sydney-child-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), '3.3' );
+	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array(), '3.3' );
 }
-
+add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue' );
 /* ADD YOUR CUSTOM FUNCTIONS BELOW */
-function child_enqueue_styles() {
-	wp_enqueue_script( 'bootstrap-js', get_theme_file_uri() . '/js/bootstrap.bundle.min.js', array( 'jquery' ),'',true );
+/**
+ * Enqueue styles function
+ *
+ * @return void
+ */
+function sydney_child_enqueue_styles() {
+	wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), '3.3', true );
 }
 add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue_styles', 15 );
 /**
  * Override woocommerce_header_cart function in parent theme.
  * display login/account/logout links
- *
  */
 function sydney_woocommerce_header_cart() {
 	if ( is_user_logged_in() ) {
@@ -90,7 +91,6 @@ function sydney_woocommerce_header_cart() {
 		</div>
 		<?php
 	}
-
 }
 /**
  * Include files used by this theme.
