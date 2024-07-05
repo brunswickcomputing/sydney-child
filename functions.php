@@ -2,8 +2,9 @@
 /**
  * Sydney child functions
  *
+ * @package Sydney_child
  */
-	
+
 /**
  * Enqueues the parent stylesheet. Do not remove this function.
  */
@@ -20,7 +21,7 @@ function sydney_child_enqueue() {
 function child_enqueue_styles() {
 	wp_enqueue_script( 'bootstrap-js', get_theme_file_uri() . '/js/bootstrap.bundle.min.js', array( 'jquery' ),'',true );
 }
-add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue_styles', 15 );
 /**
  * Override woocommerce_header_cart function in parent theme.
  * display login/account/logout links
@@ -60,33 +61,54 @@ function sydney_woocommerce_header_cart() {
 }
 /**
  * Include files used by this theme.
- *
  */
-function mytheme_includes() {
-		require_once get_theme_file_path( 'includes/classes/class-woocommerce-dummy.php' );
-		require_once( 'includes/widgets/sydney-author-archive.php' );
+function sydney_child_includes() {
+	require_once get_theme_file_path( 'includes/classes/class-woocommerce-dummy.php' );
+	require_once 'includes/widgets/sydney-author-archive.php';
 }
-add_action( 'after_setup_theme', 'mytheme_includes' );
+add_action( 'after_setup_theme', 'sydney_child_includes' );
 
 /**
+ * Add google fonts.
+ */
+function sydney_child_add_google_fonts() {
+	wp_enqueue_style( 'sydney-child-google-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap', array(), '3.1' );
+	wp_enqueue_style( 'sydney-child-google-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap', array(), '3.1' );
+}
+add_action( 'wp_enqueue_scripts', 'sydney_child_add_google_fonts' );
+/**
  * Dummy functions to handle dummy WooCommerce class.
- *
  */
 function is_shop() {
 	return false;
 }
+/**
+ * Dummy functions to handle dummy WooCommerce class.
+ */
 function is_cart() {
 	return false;
 }
+/**
+ * Dummy functions to handle dummy WooCommerce class.
+ */
 function is_product_category() {
 	return false;
 }
+/**
+ * Dummy functions to handle dummy WooCommerce class.
+ */
 function is_woocommerce() {
 	return false;
 }
+/**
+ * Dummy functions to handle dummy WooCommerce class.
+ */
 function is_checkout() {
 	return false;
 }
+/**
+ * Dummy functions to handle dummy WooCommerce class.
+ */
 function is_account_page() {
 	return false;
 }
