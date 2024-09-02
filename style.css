@@ -218,3 +218,25 @@ th, td {
 .dropdown-item {
     color: var(--e-global-color-global_color_1);
 }
+.basic-header {
+	padding: 1rem 0;
+	background-color: var(--e-global-color-global_color_1);
+}
+.page--basic {
+	margin: auto;
+	display: flex;
+	width: 480px;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.page--basic .sydney-credits {
+	text-align: center;
+}
+
+.basic {
+	position: relative;
+	width: 100%;
+	box-shadow: 1px 1px 17px rgba(0, 0, 0, .35);
+}

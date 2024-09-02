@@ -21,6 +21,7 @@ add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue' );
  * @return void
  */
 function sydney_child_enqueue_styles() {
+	wp_dequeue_script( 'bootstrap-js' );
 	wp_enqueue_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), '3.3', true );
 }
 add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue_styles', 15 );
@@ -145,3 +146,49 @@ function is_checkout() {
 function is_account_page() {
 	return false;
 }
+/**
+ * Basic Footer area
+ */
+function sydney_basic_footer_area() {
+	$container = get_theme_mod( 'footer_credits_container', 'container' );
+	$credits   = sydney_footer_credits();
+	?>
+
+	<footer id="colophon" class="site-footer">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<div class="site-info">
+				<div class="row">
+					<div class="col-12">
+						<?php echo wp_kses_post( $credits ); ?>
+					</div>
+				</div>
+			</div>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+
+	<?php
+}
+add_action( 'sydney_basic_footer', 'sydney_basic_footer_area' );
+/**
+ * Basic Header area
+ */
+function sydney_basic_header_area() {
+	$container = get_theme_mod( 'header_container', 'container' );
+	?>
+
+	<div id="masthead" class="basic-header">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<div class="row valign">
+				<div class="col-12 align-center">
+					<?php
+					$sydney_header = new Sydney_Header();
+					$sydney_header->logo( $context = 'main' );
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php
+}
+add_action( 'sydney_basic_header', 'sydney_basic_header_area' );
