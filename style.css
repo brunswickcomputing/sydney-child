@@ -80,8 +80,8 @@ div#loginrow {
     overflow: auto;
 }
 .form-check-input:checked {
-	background-color: #006800;
-	border-color: #006800;
+	background-color: var(--e-global-color-global_color_1);
+	border-color: var(--e-global-color-global_color_1);
 }
 
 .form-check-input:focus {
@@ -92,8 +92,8 @@ div#loginrow {
 
 .btn-primary {
   color: #fff;
-  background-color: #006800;
-  border-color: #006800;
+  background-color: var(--e-global-color-global_color_1);
+  border-color: var(--e-global-color-global_color_1);
 }
 .btn-primary:hover {
   color: #fff;
@@ -115,11 +115,11 @@ div#loginrow {
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #006800;
-  border-color: #006800;
+  background-color: var(--e-global-color-global_color_1);
+  border-color: var(--e-global-color-global_color_1);
 }
 .nav-link {
-	color: #006800;
+	color: var(--e-global-color-global_color_1);
 }
 @media (max-width: 768px) {
 	.form-select {
@@ -152,7 +152,7 @@ div#loginrow {
 	margin-left: 0;
 }
 .spinner-border {
-	border-color: #006800;
+	border-color: var(--e-global-color-global_color_1);
 	border-right-color: transparent;
 	border-width: 0.5rem;
 	height: 5rem;
@@ -216,5 +216,5 @@ th, td {
 }
 
 .dropdown-item {
-    color: #006800;
+    color: var(--e-global-color-global_color_1);
 }
