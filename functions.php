@@ -35,10 +35,10 @@ function sydney_woocommerce_header_cart() {
 		$account_url    = esc_url( home_url( '/member-account/' ) );
 		$favourites_url = esc_url( home_url( '/member-account/favourites/' ) );
 		$messages_url   = esc_url( home_url( '/member-account/messages/' ) );
-		if ( class_exists( 'Racketmanager\Racketmanager_Player' ) ) {
-			$user = Racketmanager\get_player( get_current_user_id() );
-			if ( $user ) {
-				$message_count = $user->get_messages(
+		if ( class_exists( 'Racketmanager\Racketmanager_User' ) ) {
+			$rm_user = Racketmanager\get_user( get_current_user_id() );
+			if ( $rm_user ) {
+				$message_count = $rm_user->get_messages(
 					array(
 						'count'  => true,
 						'status' => 'unread',
