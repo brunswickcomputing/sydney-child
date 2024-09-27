@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/sydney
 Author: aThemes
 Author URI: http://athemes.com
 Template: sydney
-Version: 3.3
+Version: 4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sydney
@@ -214,13 +214,15 @@ th, td {
 .dropdown-menu.show {
     background: white;
 }
-
 .dropdown-item {
     color: var(--e-global-color-global_color_1);
 }
 .basic-header {
 	padding: 1rem 0;
 	background-color: var(--e-global-color-global_color_1);
+}
+.basic-body {
+	margin: 2rem 0;
 }
 .page--basic {
 	margin: auto;
@@ -230,13 +232,52 @@ th, td {
 	justify-content: center;
 	min-height: 100vh;
 }
-
 .page--basic .sydney-credits {
 	text-align: center;
 }
-
 .basic {
 	position: relative;
 	width: 100%;
 	box-shadow: 1px 1px 17px rgba(0, 0, 0, .35);
+}
+@media (max-width: 360px) {
+	.page--basic {
+		width: 360px;
+	}
+}
+@media (max-width: 375px) {
+	.page--basic {
+		width: 375px;
+	}
+}
+@media (max-width: 390px) {
+	.page--basic {
+		width: 390px;
+	}
+}
+@media (max-width: 393px) {
+	.page--basic {
+		width: 393px;
+	}
+}
+@media (max-width: 412px) {
+	.page--basic {
+		width: 412px;
+	}
+}
+@media (max-width: 414px) {
+	.page--basic {
+		width: 414px;
+	}
+}
+@media (max-width: 430px) {
+	.page--basic {
+		width: 430px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.site-info .sydney-credits .position-right {
+		float: none;
+		text-align: center;
+	}
 }
