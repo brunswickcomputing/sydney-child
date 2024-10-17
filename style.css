@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/sydney
 Author: aThemes
 Author URI: http://athemes.com
 Template: sydney
-Version: 4.0
+Version: 4.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sydney
@@ -227,7 +227,7 @@ th, td {
 .page--basic {
 	margin: auto;
 	display: flex;
-	width: 480px;
+	width: 375px;
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
@@ -240,44 +240,12 @@ th, td {
 	width: 100%;
 	box-shadow: 1px 1px 17px rgba(0, 0, 0, .35);
 }
-@media (max-width: 360px) {
+@media (min-width: 768px) {
 	.page--basic {
-		width: 360px;
+		width: 480px;
 	}
 }
-@media (max-width: 375px) {
-	.page--basic {
-		width: 375px;
-	}
-}
-@media (max-width: 390px) {
-	.page--basic {
-		width: 390px;
-	}
-}
-@media (max-width: 393px) {
-	.page--basic {
-		width: 393px;
-	}
-}
-@media (max-width: 412px) {
-	.page--basic {
-		width: 412px;
-	}
-}
-@media (max-width: 414px) {
-	.page--basic {
-		width: 414px;
-	}
-}
-@media (max-width: 430px) {
-	.page--basic {
-		width: 430px;
-	}
-}
-@media only screen and (max-width: 767px) {
-	.site-info .sydney-credits .position-right {
-		float: none;
-		text-align: center;
-	}
+.page--basic .site-info .sydney-credits .position-right {
+	float: none;
+	text-align: center;
 }
