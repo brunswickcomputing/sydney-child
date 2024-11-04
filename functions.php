@@ -31,13 +31,18 @@ add_action( 'wp_enqueue_scripts', 'sydney_child_enqueue_styles', 15 );
  */
 function sydney_woocommerce_header_cart() {
 	if ( is_user_logged_in() ) {
-		$current_user   = wp_get_current_user();
-		$account_url    = esc_url( home_url( '/member-account/' ) );
-		$favourites_url = esc_url( home_url( '/member-account/favourites/' ) );
-		$messages_url   = esc_url( home_url( '/member-account/messages/' ) );
+		$current_user    = wp_get_current_user();
+		$account_url     = esc_url( home_url( '/member-account/' ) );
+		$favourites_url  = esc_url( home_url( '/member-account/favourites/' ) );
+		$messages_url    = esc_url( home_url( '/member-account/messages/' ) );
+		$memberships_url = esc_url( home_url( '/member-account/memberships/' ) );
 		if ( class_exists( 'Racketmanager\Racketmanager_User' ) ) {
 			$rm_user = Racketmanager\get_user( get_current_user_id() );
 			if ( $rm_user ) {
+				$profile_url = esc_url( home_url( '/player/' . Racketmanager\seo_url( $rm_user->display_name ) . '/' ) );
+				if ( ! empty( $rm_user->btm ) ) {
+					$profile_url .= $rm_user->btm . '/';
+				}
 				$message_count = $rm_user->get_messages(
 					array(
 						'count'  => true,
@@ -53,7 +58,13 @@ function sydney_woocommerce_header_cart() {
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a class="dropdown-item" href="<?php echo esc_attr( $account_url ); ?>"><?php esc_html_e( 'Profile', 'sydney' ); ?></a>
+					<a class="dropdown-item" href="<?php echo esc_attr( $profile_url ); ?>"><?php esc_html_e( 'Profile', 'sydney' ); ?></a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_attr( $account_url ); ?>"><?php esc_html_e( 'Account', 'sydney' ); ?></a>
+				</li>
+				<li>
+					<a class="dropdown-item" href="<?php echo esc_attr( $memberships_url ); ?>"><?php esc_html_e( 'Memberships', 'sydney' ); ?></a>
 				</li>
 				<li><hr class="dropdown-divider"></li>
 				<li>
