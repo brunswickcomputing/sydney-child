@@ -4,7 +4,7 @@ Theme URI: http://athemes.com/theme/sydney
 Author: aThemes
 Author URI: http://athemes.com
 Template: sydney
-Version: 4.4
+Version: 4.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: sydney
@@ -150,6 +150,9 @@ div#loginrow {
 .form-switch.form-check-reverse .form-check-input {
 	margin-right: -2.5em;
 	margin-left: 0;
+}
+.spinner-loading {
+	padding: 3rem;
 }
 .spinner-border {
 	border-color: var(--e-global-color-global_color_1);
