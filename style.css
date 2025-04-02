@@ -252,3 +252,7 @@ th, td {
 	float: none;
 	text-align: center;
 }
+.bottom-header-row #mainnav .menu.nav-menu li.menu-item.current-menu-ancestor > a,
+.bottom-header-row #mainnav .menu.nav-menu li.menu-item.current-menu-item > a {
+    font-weight: bold;
+}
