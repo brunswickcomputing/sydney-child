@@ -36,7 +36,7 @@ function sydney_woocommerce_header_cart() {
 		$favourites_url  = esc_url( home_url( '/member-account/favourites/' ) );
 		$messages_url    = esc_url( home_url( '/member-account/messages/' ) );
 		$memberships_url = esc_url( home_url( '/member-account/memberships/' ) );
-		if ( class_exists( 'Racketmanager\Racketmanager_User' ) ) {
+		if ( class_exists( 'Racketmanager\User' ) ) {
 			$rm_user = Racketmanager\get_user( get_current_user_id() );
 			if ( $rm_user ) {
 				$profile_url = esc_url( home_url( '/player/' . Racketmanager\seo_url( $rm_user->display_name ) . '/' ) );
