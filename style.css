@@ -130,27 +130,6 @@ div#loginrow {
 		background-size: .8rem;
 	}
 }
-.form-check-reverse {
-	padding-right: 1.5em;
-	padding-left: 0;
-	text-align: right;
-}
-
-.form-check-reverse .form-check-input {
-	float: right;
-	margin-right: -1.5em;
-	margin-left: 0;
-}
-
-.form-switch.form-check-reverse {
-	padding-right: 2.5em;
-	padding-left: 0;
-}
-
-.form-switch.form-check-reverse .form-check-input {
-	margin-right: -2.5em;
-	margin-left: 0;
-}
 .spinner-loading {
 	padding: 3rem;
 }
