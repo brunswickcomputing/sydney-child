@@ -36,19 +36,18 @@ function sydney_woocommerce_header_cart() {
         $favourites_url  = esc_url( home_url( '/member-account/favourites/' ) );
         $messages_url    = esc_url( home_url( '/member-account/messages/' ) );
         $memberships_url = esc_url( home_url( '/member-account/memberships/' ) );
-        if ( class_exists( 'Racketmanager\Domain\User' ) ) {
-            $rm_user = Racketmanager\get_user( get_current_user_id() );
+        $profile_url     = $account_url;
+        $message_count   = 0;
+        if ( class_exists( 'Racketmanager\Public_Api' ) ) {
+            $rm_user = \Racketmanager\Public_Api::get_user( get_current_user_id() );
             if ( $rm_user ) {
-                $profile_url = esc_url( home_url( '/player/' . Racketmanager\seo_url( $rm_user->display_name ) . '/' ) );
+                $profile_path = '/player/' . \Racketmanager\Public_Api::seo_url( $rm_user->display_name ) . '/';
                 if ( ! empty( $rm_user->btm ) ) {
-                    $profile_url .= $rm_user->btm . '/';
+                    $profile_path .= rawurlencode( (string) $rm_user->btm ) . '/';
                 }
-                $message_count = $rm_user->get_messages(
-                    array(
-                        'count'  => true,
-                        'status' => 'unread',
-                    )
-                );
+                $profile_url   = esc_url( home_url( $profile_path ) );
+                $user_id       = (int) ( $rm_user->id ?? $rm_user->ID ?? get_current_user_id() );
+                $message_count = \Racketmanager\Public_Api::get_unread_message_count( $user_id );
             }
         }
         ?>
