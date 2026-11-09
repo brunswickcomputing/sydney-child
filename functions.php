@@ -156,6 +156,9 @@ function is_checkout() {
 function is_account_page() {
     return false;
 }
+function wc_orders_count() {
+    return 0;
+}
 /**
  * Basic Footer area
  */
